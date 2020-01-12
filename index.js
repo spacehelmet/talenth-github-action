@@ -10,10 +10,10 @@ const install = async() => {
 
 const start = async() => {
   console.log("starting lambda server")
-  await exec.exec("netlify-lambda serve src/lambda -p 8000 &")
+  await exec.exec("./node-modules/.bin/netlify-lambda serve src/lambda -p 8000 &")
 
   console.log("starting react server")
-  await exec.exec("yarn start:app &")
+  await exec.exec("./node-modules/.bin/react-scripts start &")
 
   console.log("waiting for the app")
   await exec.exec("./node-modules/.bin/wait-on http://localhost:3000")
