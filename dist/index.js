@@ -9089,10 +9089,9 @@ const start = async() => {
 }
 
 const test = async() => {
-  console.log("TEST")
-  console.log(process.env)
+  console.log(process.env.CYPRESS_RECORD_KEY)
   console.log("starting Cypress tests")
-  await exec.exec("npx cypress run")
+  await exec.exec("npx cypress run --record")
 }
 
 async function run() {
