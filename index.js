@@ -21,7 +21,7 @@ const start = async() => {
 
 const test = async() => {
   console.log("starting Cypress tests")
-  await exec.exec("yarn test")
+  await exec.exec("yarn ci:test")
 }
 
 async function run() {
