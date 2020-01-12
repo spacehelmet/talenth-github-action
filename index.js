@@ -9,20 +9,26 @@ const install = async() => {
 }
 
 const start = async() => {
-  console.log("starting server with command")
-  await exec.exec("yarn start")
+  console.log("starting lambda server")
+  await exec.exec("start:lambda &")
+
+  console.log("starting react server")
+  await exec.exec("start:app &")
+
+  console.log("waiting for the app")
+  await exec.exec("./node-modules/.bin/wait-on http://localhost:3000")
 }
 
-const waitOn = async() => {
-  console.log("waiting for the server to start")
-  await exec.exec("wait-on http://localhost:3000")
+const test = async() => {
+  console.log("starting Cypress tests")
+  await exec.exec("yarn test")
 }
 
 async function run() {
   try {
     await install()
     await start()
-    await waitOn()
+    await test()
 
   } catch (error) {
     core.setFailed(error.message)
