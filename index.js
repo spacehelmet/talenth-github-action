@@ -10,13 +10,13 @@ const install = async() => {
 
 const start = async() => {
   console.log("starting lambda server")
-  await exec.exec("yarn lambda")
+  await exec.exec("yarn ci:lambda")
 
   console.log("starting react server")
-  await exec.exec("./node-modules/.bin/react-scripts start &")
+  await exec.exec("yarn ci:start")
 
   console.log("waiting for the app")
-  await exec.exec("./node-modules/.bin/wait-on http://localhost:3000")
+  await exec.exec("yarn ci:wait")
 }
 
 const test = async() => {
