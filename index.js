@@ -27,9 +27,9 @@ const test = async () => {
 
 const faunaSetup = async () => {
   console.log("setting up Fauna")
-  await exec.exec(`./node_modules/.bin/fauna eval talenth-ci --file=./fauna/cleanup.fql --secret=${process.env.PARENT_FAUNADB_KEY}`)
-  await exec.exec(`./node_modules/.bin/fauna eval talenth-ci --file=./fauna/seed/recruiter.fql --secret=${process.env.PARENT_FAUNADB_KEY}`)
-  await exec.exec(`./node_modules/.bin/fauna eval talenth-ci --file=./fauna/seed/applicant.fql --secret=${process.env.PARENT_FAUNADB_KEY}`)
+  await exec.exec(`npx fauna eval talenth-ci --file=./fauna/cleanup.fql --secret=${process.env.PARENT_FAUNADB_KEY}`)
+  await exec.exec(`npx fauna eval talenth-ci --file=./fauna/seed/recruiter.fql --secret=${process.env.PARENT_FAUNADB_KEY}`)
+  await exec.exec(`npx fauna eval talenth-ci --file=./fauna/seed/applicant.fql --secret=${process.env.PARENT_FAUNADB_KEY}`)
 }
 
 async function run() {
