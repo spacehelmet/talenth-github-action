@@ -9091,7 +9091,7 @@ const start = async () => {
 const test = async () => {
   console.log(process.env.CYPRESS_RECORD_KEY)
   console.log("starting Cypress tests")
-  await exec.exec("unset NODE_OPTIONS")
+  // await exec.exec("unset NODE_OPTIONS")
   await exec.exec("npx cypress run --record --browser chrome")
 }
 
