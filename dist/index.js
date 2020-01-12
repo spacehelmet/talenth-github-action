@@ -9079,7 +9079,7 @@ const install = async() => {
 
 const start = async() => {
   console.log("starting lambda server")
-  await exec.exec("./node-modules/.bin/netlify-lambda serve src/lambda -p 8000 &")
+  await exec.exec("yarn lambda")
 
   console.log("starting react server")
   await exec.exec("./node-modules/.bin/react-scripts start &")
