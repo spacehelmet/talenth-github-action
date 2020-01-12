@@ -9089,6 +9089,7 @@ const start = async() => {
 }
 
 const test = async() => {
+  await new Promise(resolve => setTimeout(resolve, 1000))
   console.log(process.env.CYPRESS_RECORD_KEY)
   console.log("starting Cypress tests")
   await exec.exec("npx cypress run --record")
