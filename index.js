@@ -20,6 +20,7 @@ const start = async() => {
 }
 
 const test = async() => {
+  console.log(process.env)
   console.log("starting Cypress tests")
   await exec.exec("yarn ci:test")
 }
