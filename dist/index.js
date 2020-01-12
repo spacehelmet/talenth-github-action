@@ -9089,8 +9089,10 @@ const start = async() => {
 }
 
 const test = async() => {
+  console.log("TEST")
+  console.log(process.env)
   console.log("starting Cypress tests")
-  await exec.exec("yarn ci:test")
+  await exec.exec("npx cypress run")
 }
 
 async function run() {
