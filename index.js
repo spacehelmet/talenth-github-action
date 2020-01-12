@@ -1,15 +1,32 @@
-const core = require('@actions/core');
-const github = require('@actions/github');
+const core = require('@actions/core')
+const exec = require('@actions/exec')
+const github = require('@actions/github')
+const io = require('@actions/io')
 
-try {
-  // `who-to-greet` input defined in action metadata file
-  const nameToGreet = core.getInput('who-to-greet');
-  console.log(`Hello ${nameToGreet}!`);
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
-} catch (error) {
-  core.setFailed(error.message);
+const install = async() => {
+  console.log("installing NPM dependencies using Yarn")
+  await exec.exec("yarn install")
 }
+
+const start = async() => {
+  console.log("starting server with command")
+  await exec.exec("yarn start")
+}
+
+const waitOn = async() => {
+  console.log("waiting for the server to start")
+  await exec.exec("wait-on http://localhost:3000")
+}
+
+async function run() {
+  try {
+    await install()
+    await start()
+    await waitOn()
+
+  } catch (error) {
+    core.setFailed(error.message)
+  }
+}
+
+run()
